@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A8A6110D132199CE00D105EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A6110C132199CE00D105EC /* UIKit.framework */; };
+		A8A6110F132199CE00D105EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A6110E132199CE00D105EC /* Foundation.framework */; };
+		A8A61111132199CE00D105EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A61110132199CE00D105EC /* CoreGraphics.framework */; };
+		A8A61117132199CE00D105EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8A61115132199CE00D105EC /* InfoPlist.strings */; };
+		A8A6111A132199CF00D105EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A61119132199CF00D105EC /* main.m */; };
+		A8A6111D132199CF00D105EC /* LuaShotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A6111C132199CF00D105EC /* LuaShotAppDelegate.m */; };
+		A8A61120132199CF00D105EC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A6111E132199CF00D105EC /* MainWindow.xib */; };
+		A8A61123132199CF00D105EC /* LuaShotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A61122132199CF00D105EC /* LuaShotViewController.m */; };
+		A8A61126132199CF00D105EC /* LuaShotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8A61124132199CF00D105EC /* LuaShotViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A8A61108132199CE00D105EC /* LuaShot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuaShot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8A6110C132199CE00D105EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A8A6110E132199CE00D105EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A8A61110132199CE00D105EC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A8A61114132199CE00D105EC /* LuaShot-Info.plist */ = {isa = PBXFileReference; path = "LuaShot-Info.plist"; sourceTree = "<group>"; };
+		A8A61116132199CE00D105EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A8A61118132199CF00D105EC /* LuaShot-Prefix.pch */ = {isa = PBXFileReference; path = "LuaShot-Prefix.pch"; sourceTree = "<group>"; };
+		A8A61119132199CF00D105EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A8A6111B132199CF00D105EC /* LuaShotAppDelegate.h */ = {isa = PBXFileReference; path = LuaShotAppDelegate.h; sourceTree = "<group>"; };
+		A8A6111C132199CF00D105EC /* LuaShotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LuaShotAppDelegate.m; sourceTree = "<group>"; };
+		A8A6111F132199CF00D105EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A8A61121132199CF00D105EC /* LuaShotViewController.h */ = {isa = PBXFileReference; path = LuaShotViewController.h; sourceTree = "<group>"; };
+		A8A61122132199CF00D105EC /* LuaShotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LuaShotViewController.m; sourceTree = "<group>"; };
+		A8A61125132199CF00D105EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LuaShotViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A8A61105132199CE00D105EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A6110D132199CE00D105EC /* UIKit.framework in Frameworks */,
+				A8A6110F132199CE00D105EC /* Foundation.framework in Frameworks */,
+				A8A61111132199CE00D105EC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A8A610FD132199CE00D105EC = {
+			isa = PBXGroup;
+			children = (
+				A8A61112132199CE00D105EC /* LuaShot */,
+				A8A6110B132199CE00D105EC /* Frameworks */,
+				A8A61109132199CE00D105EC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A8A61109132199CE00D105EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A8A61108132199CE00D105EC /* LuaShot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A8A6110B132199CE00D105EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8A6110C132199CE00D105EC /* UIKit.framework */,
+				A8A6110E132199CE00D105EC /* Foundation.framework */,
+				A8A61110132199CE00D105EC /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8A61112132199CE00D105EC /* LuaShot */ = {
+			isa = PBXGroup;
+			children = (
+				A8A6111B132199CF00D105EC /* LuaShotAppDelegate.h */,
+				A8A6111C132199CF00D105EC /* LuaShotAppDelegate.m */,
+				A8A6111E132199CF00D105EC /* MainWindow.xib */,
+				A8A61121132199CF00D105EC /* LuaShotViewController.h */,
+				A8A61122132199CF00D105EC /* LuaShotViewController.m */,
+				A8A61124132199CF00D105EC /* LuaShotViewController.xib */,
+				A8A61113132199CE00D105EC /* Supporting Files */,
+			);
+			path = LuaShot;
+			sourceTree = "<group>";
+		};
+		A8A61113132199CE00D105EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8A61114132199CE00D105EC /* LuaShot-Info.plist */,
+				A8A61115132199CE00D105EC /* InfoPlist.strings */,
+				A8A61118132199CF00D105EC /* LuaShot-Prefix.pch */,
+				A8A61119132199CF00D105EC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A8A61107132199CE00D105EC /* LuaShot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A61129132199CF00D105EC /* Build configuration list for PBXNativeTarget "LuaShot" */;
+			buildPhases = (
+				A8A61104132199CE00D105EC /* Sources */,
+				A8A61105132199CE00D105EC /* Frameworks */,
+				A8A61106132199CE00D105EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LuaShot;
+			productName = LuaShot;
+			productReference = A8A61108132199CE00D105EC /* LuaShot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A8A610FF132199CE00D105EC /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A8A61102132199CE00D105EC /* Build configuration list for PBXProject "LuaShot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A8A610FD132199CE00D105EC;
+			productRefGroup = A8A61109132199CE00D105EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A8A61107132199CE00D105EC /* LuaShot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A8A61106132199CE00D105EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A61117132199CE00D105EC /* InfoPlist.strings in Resources */,
+				A8A61120132199CF00D105EC /* MainWindow.xib in Resources */,
+				A8A61126132199CF00D105EC /* LuaShotViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A8A61104132199CE00D105EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A6111A132199CF00D105EC /* main.m in Sources */,
+				A8A6111D132199CF00D105EC /* LuaShotAppDelegate.m in Sources */,
+				A8A61123132199CF00D105EC /* LuaShotViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A8A61115132199CE00D105EC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8A61116132199CE00D105EC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A8A6111E132199CF00D105EC /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8A6111F132199CF00D105EC /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A8A61124132199CF00D105EC /* LuaShotViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8A61125132199CF00D105EC /* en */,
+			);
+			name = LuaShotViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A8A61127132199CF00D105EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A8A61128132199CF00D105EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A8A6112A132199CF00D105EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LuaShot/LuaShot-Prefix.pch";
+				INFOPLIST_FILE = "LuaShot/LuaShot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A8A6112B132199CF00D105EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LuaShot/LuaShot-Prefix.pch";
+				INFOPLIST_FILE = "LuaShot/LuaShot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A8A61102132199CE00D105EC /* Build configuration list for PBXProject "LuaShot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A61127132199CF00D105EC /* Debug */,
+				A8A61128132199CF00D105EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A61129132199CF00D105EC /* Build configuration list for PBXNativeTarget "LuaShot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A6112A132199CF00D105EC /* Debug */,
+				A8A6112B132199CF00D105EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A8A610FF132199CE00D105EC /* Project object */;
+}

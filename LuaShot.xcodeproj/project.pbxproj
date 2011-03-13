@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A84F4DAA132C1BBC00F20675 /* Test.lua in Resources */ = {isa = PBXBuildFile; fileRef = A84F4D07132C159B00F20675 /* Test.lua */; };
+		A84F4E35132C309500F20675 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = A84F4E2B132C309500F20675 /* RegexKitLite.m */; };
+		A84F4E41132C31A600F20675 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A84F4E40132C31A600F20675 /* libicucore.dylib */; };
 		A8A6110D132199CE00D105EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A6110C132199CE00D105EC /* UIKit.framework */; };
 		A8A6110F132199CE00D105EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A6110E132199CE00D105EC /* Foundation.framework */; };
 		A8A61111132199CE00D105EC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A61110132199CE00D105EC /* CoreGraphics.framework */; };
@@ -46,12 +49,17 @@
 		A8A6128313219A6C00D105EC /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = A8A6126013219A6C00D105EC /* lvm.c */; };
 		A8A6128413219A6C00D105EC /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = A8A6126213219A6C00D105EC /* lzio.c */; };
 		A8A6128613219A6C00D105EC /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = A8A6126513219A6C00D105EC /* print.c */; };
-		A8A6128913219AAC00D105EC /* BindLua.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A6128813219AAC00D105EC /* BindLua.m */; };
+		A8A6128913219AAC00D105EC /* MoonShot.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A6128813219AAC00D105EC /* MoonShot.m */; };
 		A8A6128C13219CA200D105EC /* NSObject+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A6128B13219CA100D105EC /* NSObject+Properties.m */; };
 		A8A6128F1321A14E00D105EC /* NSString+PropertyKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A6128E1321A14E00D105EC /* NSString+PropertyKVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A84F4CC4132C11E000F20675 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lua.hpp; path = "LuaShot/lua-5.1.4/etc/lua.hpp"; sourceTree = SOURCE_ROOT; };
+		A84F4D07132C159B00F20675 /* Test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test.lua; sourceTree = "<group>"; };
+		A84F4E29132C309500F20675 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		A84F4E2B132C309500F20675 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		A84F4E40132C31A600F20675 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		A8A61108132199CE00D105EC /* LuaShot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuaShot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A6110C132199CE00D105EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A8A6110E132199CE00D105EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -119,8 +127,8 @@
 		A8A6126213219A6C00D105EC /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
 		A8A6126313219A6C00D105EC /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		A8A6126513219A6C00D105EC /* print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = print.c; sourceTree = "<group>"; };
-		A8A6128713219AAC00D105EC /* BindLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindLua.h; sourceTree = "<group>"; };
-		A8A6128813219AAC00D105EC /* BindLua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindLua.m; sourceTree = "<group>"; };
+		A8A6128713219AAC00D105EC /* MoonShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoonShot.h; sourceTree = "<group>"; };
+		A8A6128813219AAC00D105EC /* MoonShot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoonShot.m; sourceTree = "<group>"; };
 		A8A6128A13219CA100D105EC /* NSObject+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Properties.h"; sourceTree = "<group>"; };
 		A8A6128B13219CA100D105EC /* NSObject+Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Properties.m"; sourceTree = "<group>"; };
 		A8A6128D1321A14E00D105EC /* NSString+PropertyKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PropertyKVC.h"; path = "../NSString+PropertyKVC.h"; sourceTree = "<group>"; };
@@ -135,12 +143,22 @@
 				A8A6110D132199CE00D105EC /* UIKit.framework in Frameworks */,
 				A8A6110F132199CE00D105EC /* Foundation.framework in Frameworks */,
 				A8A61111132199CE00D105EC /* CoreGraphics.framework in Frameworks */,
+				A84F4E41132C31A600F20675 /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A84F4E1E132C309500F20675 /* RegexKitLite-4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				A84F4E29132C309500F20675 /* RegexKitLite.h */,
+				A84F4E2B132C309500F20675 /* RegexKitLite.m */,
+			);
+			path = "RegexKitLite-4.0";
+			sourceTree = "<group>";
+		};
 		A8A610FD132199CE00D105EC = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +182,7 @@
 				A8A6110C132199CE00D105EC /* UIKit.framework */,
 				A8A6110E132199CE00D105EC /* Foundation.framework */,
 				A8A61110132199CE00D105EC /* CoreGraphics.framework */,
+				A84F4E40132C31A600F20675 /* libicucore.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,6 +190,7 @@
 		A8A61112132199CE00D105EC /* LuaShot */ = {
 			isa = PBXGroup;
 			children = (
+				A84F4E1E132C309500F20675 /* RegexKitLite-4.0 */,
 				A8A6122D13219A6C00D105EC /* Lua */,
 				A8A6111B132199CF00D105EC /* LuaShotAppDelegate.h */,
 				A8A6111C132199CF00D105EC /* LuaShotAppDelegate.m */,
@@ -181,10 +201,11 @@
 				A8A61113132199CE00D105EC /* Supporting Files */,
 				A8A6128D1321A14E00D105EC /* NSString+PropertyKVC.h */,
 				A8A6128E1321A14E00D105EC /* NSString+PropertyKVC.m */,
-				A8A6128713219AAC00D105EC /* BindLua.h */,
-				A8A6128813219AAC00D105EC /* BindLua.m */,
+				A8A6128713219AAC00D105EC /* MoonShot.h */,
+				A8A6128813219AAC00D105EC /* MoonShot.m */,
 				A8A6128A13219CA100D105EC /* NSObject+Properties.h */,
 				A8A6128B13219CA100D105EC /* NSObject+Properties.m */,
+				A84F4D07132C159B00F20675 /* Test.lua */,
 			);
 			path = LuaShot;
 			sourceTree = "<group>";
@@ -203,6 +224,7 @@
 		A8A6122D13219A6C00D105EC /* Lua */ = {
 			isa = PBXGroup;
 			children = (
+				A84F4CC4132C11E000F20675 /* lua.hpp */,
 				A8A6122E13219A6C00D105EC /* lapi.c */,
 				A8A6122F13219A6C00D105EC /* lapi.h */,
 				A8A6123013219A6C00D105EC /* lauxlib.c */,
@@ -311,6 +333,7 @@
 				A8A61117132199CE00D105EC /* InfoPlist.strings in Resources */,
 				A8A61120132199CF00D105EC /* MainWindow.xib in Resources */,
 				A8A61126132199CF00D105EC /* LuaShotViewController.xib in Resources */,
+				A84F4DAA132C1BBC00F20675 /* Test.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,9 +377,10 @@
 				A8A6128313219A6C00D105EC /* lvm.c in Sources */,
 				A8A6128413219A6C00D105EC /* lzio.c in Sources */,
 				A8A6128613219A6C00D105EC /* print.c in Sources */,
-				A8A6128913219AAC00D105EC /* BindLua.m in Sources */,
+				A8A6128913219AAC00D105EC /* MoonShot.m in Sources */,
 				A8A6128C13219CA200D105EC /* NSObject+Properties.m in Sources */,
 				A8A6128F1321A14E00D105EC /* NSString+PropertyKVC.m in Sources */,
+				A84F4E35132C309500F20675 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +501,7 @@
 				A8A6112B132199CF00D105EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

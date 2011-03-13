@@ -12,4 +12,6 @@
     
 }
 
+- (void)log:(NSString*) msg;
+
 @end

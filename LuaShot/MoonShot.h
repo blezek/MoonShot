@@ -1,5 +1,5 @@
 //
-//  BindLua.h
+//  MoonShot.h
 //  LuaShot
 //
 //  Created by blezek on 3/4/11.
@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "lua.h"
+#import "lua.h"
+#import "lualib.h"
+#import "lauxlib.h"
 
-@interface BindLua : NSObject {
+@interface MoonShot : NSObject {
+  NSMutableDictionary *registeredClasses;
 }
 
--(void)bind:(Class)obj toState:(lua_State*) L;
-
+- (void)bind:(Class)obj toState:(lua_State*) L;
+- (void)bridge:(id)object withName:(NSString*)name toState:(lua_State*)L;
+- (id)init;
 @end

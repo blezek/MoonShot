@@ -17,5 +17,10 @@
 
 - (void)bind:(Class)obj toState:(lua_State*) L;
 - (void)bridge:(id)object withName:(NSString*)name toState:(lua_State*)L;
+- (NSString*)initLuaObject:(NSString*)class withObjects:(NSDictionary*)map toState:(lua_State*)L;
+
+// Assumes you've push count arguments on the stack
+- (void)callMethod:(NSString*)method onObject:(NSString*)name withArgCount:(int)count toState:(lua_State*)L;
+
 - (id)init;
 @end

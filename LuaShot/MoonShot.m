@@ -8,9 +8,11 @@
 
 #import "MoonShot.h"
 #import "NSObject+Properties.h"
+#import "RegexKitLite.h"
 #import <objc/runtime.h>
 
-#define MAX_ARGS
+static int ObjectCounter = 0;
+#define MAX_ARGS 5
 
 typedef struct {
   NSInvocation *invocation;
@@ -19,6 +21,75 @@ typedef struct {
 
 static int thunk ( lua_State *L ) {
   NSLog(@"thunk!");
+  MethodContext *context = (MethodContext*)lua_touserdata(L, lua_upvalueindex(1));
+  NSInvocation *invocation = context->invocation;
+  NSLog(@"Invocation: %@", invocation );
+  NSMethodSignature *signature = [invocation methodSignature];
+  NSLog(@"Found invocation: %@ with signature %@", invocation, signature );
+  
+  // Do we have enough arguments
+  int numberOfLuaArgs = lua_gettop(L);
+  int numberOfObjCArgs = [signature numberOfArguments];
+  // Both have id(self), but ObjectiveC adds the selector, yet Lua starts at 1!
+  if ( (numberOfLuaArgs + 1) != numberOfObjCArgs ) {
+    return luaL_error(L, "method requires %d arguments, given %d", numberOfObjCArgs, numberOfLuaArgs );
+  }
+  for ( int idx = 2; idx < numberOfObjCArgs; idx++ ) {
+    const char* argString = [signature getArgumentTypeAtIndex:idx];
+    char argType = argString[0];
+    int luaType = lua_type(L, idx);
+    NSLog(@"ObjC type: %s Lua type: %d", argString, luaType);
+    
+    // Lua has the fewer "types"
+    switch ( luaType ) {
+      case LUA_TSTRING: {
+        if ( argType == _C_ID ) {
+          NSString *arg = [NSString stringWithUTF8String:lua_tostring(L,idx)];
+          [invocation setArgument:&arg atIndex:idx];
+          NSLog(@"Set string argument to %@", arg);
+        } else {
+          return luaL_error(L, "unexpected string argument");
+        }
+        break;
+      }
+      case LUA_TNUMBER: {
+        int intArg;
+        short shortArg;
+        float floatArg;
+        double doubleArg;
+        void *arg;
+        switch ( argType ) {
+          case _C_INT:
+            intArg = (int)lua_tonumber(L, idx);
+            arg = &intArg;
+            break;
+          case _C_SHT:
+            shortArg = (short)lua_tonumber(L, idx);
+            arg = &shortArg;
+            break;
+          case _C_DBL:
+            shortArg = (double)lua_tonumber(L, idx);
+            arg = &doubleArg;
+            break;
+          case _C_FLT:
+            shortArg = (float)lua_tonumber(L, idx);
+            arg = &floatArg;
+            break;
+          default:
+            return luaL_error(L, "unexpected numeric argument");
+        }
+        NSLog(@"Set numeric argument %f", lua_tonumber(L, idx) );
+        [invocation setArgument:arg atIndex:idx];
+      }
+    }
+  }
+  // OK, actually run it!
+  // We must have an ObjectiveC object...
+  id obj = *((id*)lua_touserdata(L, 1));
+  NSLog(@"Object is: %@", obj);
+  
+  [invocation invokeWithTarget:obj];
+  
   return 0;
 }
 
@@ -39,6 +110,47 @@ static int thunk ( lua_State *L ) {
   luaL_getmetatable (L, class_getName([object class]) );
   lua_setmetatable(L, -2);
   lua_settable(L,LUA_GLOBALSINDEX);
+}
+
+- (void)callMethod:(NSString*)method onObject:(NSString*)name withArgCount:(int)count toState:(lua_State*)L {
+}
+
+// Create a lua object of the given class (class.init(self)), where self
+// is a dictionary containing the given objects.
+- (NSString*)initLuaObject:(NSString*)class withObjects:(NSDictionary*)map toState:(lua_State*)L {
+  // Find the right method!
+  lua_getglobal(L,[class UTF8String]);
+  // Did we get a table?
+  if ( lua_type(L, -1) != LUA_TTABLE ) {
+    NSLog(@"Class %@ didn't return a Lua table!", class);
+    return nil;
+  }
+  // Find the init method
+  lua_getfield(L, -1, "init");
+  if ( lua_type(L,-1) != LUA_TFUNCTION ) {
+    NSLog(@"Class %@ didn't have an init method", class);
+    return nil;
+  }
+  // Remove the table
+  lua_remove(L, -2);
+  
+  // Create our "self"
+  lua_newtable(L);
+  int tableIdx = lua_gettop(L);
+  for ( NSString *key in [map allKeys] ) {
+    // Represent to lua
+    id *handle = (id*)lua_newuserdata(L,sizeof(id));
+    id obj = [map objectForKey:key];
+    *handle = obj;
+    luaL_getmetatable (L, class_getName([obj class]) );
+    lua_setmetatable(L, -2);
+    lua_setfield(L, tableIdx, [key UTF8String]);
+    NSLog(@"Set field %@ to value %@", key, obj );
+  }
+  lua_call ( L, 1, 0 );
+  NSString *name = [NSString stringWithFormat:@"LuaObject%d", ObjectCounter++];
+  lua_setglobal(L,[name UTF8String]);
+  return name;
 }
 
 - (void)bind:(Class)obj toState:(lua_State *)L {
@@ -94,6 +206,8 @@ static int thunk ( lua_State *L ) {
     // We need to create a closure containing the invocation
     NSLog(@"Signature: %@", [obj instanceMethodSignatureForSelector:@selector(didReceiveMemoryWarning)] );
     context->invocation = [NSInvocation invocationWithMethodSignature:[obj instanceMethodSignatureForSelector:selector]];
+    [context->invocation setSelector:selector];
+    NSLog(@"Invocation: %@", context->invocation );
     lua_pushstring ( L, [name UTF8String] );
     lua_pushlightuserdata(L, (void*)context);
     lua_pushcclosure(L, thunk, 1);

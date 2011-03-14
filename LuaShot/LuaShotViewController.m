@@ -32,9 +32,8 @@
 #pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void)viewDidLoad {
+  [super viewDidLoad];
   MoonShot *shot = [[MoonShot alloc] init];
   lua_State *L = lua_open();  /* create state */
   luaL_openlibs(L);  /* open libraries */
@@ -56,6 +55,9 @@
   if ( status ) {
     NSLog(@"file: Test.lua had errors:\n%s", lua_tostring(L,-1) );
   }
+  // Create our object
+  NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self, @"controller", nil];
+  [shot initLuaObject:@"Test" withObjects:dict toState:L];
   
 }
 

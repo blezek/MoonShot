@@ -12,3 +12,18 @@ end
 
 print ( "Controller: " .. tostring(controller) )
 controller:log ( "hi" )
+
+
+-- Make a test class
+Test = {}
+Test.__index = Test
+
+function Test.init(self)
+  self.foo = "foo"
+  print ( "Initialized!" )
+  return self
+end
+
+function Test:log(msg)
+  self.controller:log ( msg )
+end

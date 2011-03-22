@@ -57,7 +57,11 @@
   }
   // Create our object
   NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self, @"controller", nil];
-  [shot initLuaObject:@"Test" withObjects:dict toState:L];
+  NSString *obj = [shot initLuaObject:@"Test" withObjects:dict toState:L];
+  
+  // Call our Lua code
+  lua_pushliteral ( L, "Calling Lua from ObjC" );
+  [shot callMethod:@"log" onObject:obj withArgCount:1 toState:L];
   
 }
 

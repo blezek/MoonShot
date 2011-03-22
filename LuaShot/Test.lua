@@ -18,12 +18,33 @@ controller:log ( "hi" )
 Test = {}
 Test.__index = Test
 
-function Test.init(self)
-  self.foo = "foo"
-  print ( "Initialized!" )
-  return self
+function Test:log(msg)
+print ( "calling log" )
+DumpTable ( self )
+self.controller:log ( msg )
 end
 
-function Test:log(msg)
-  self.controller:log ( msg )
+function Test:llog(msg)
+  print ( msg )
 end
+
+function Test.init(self)
+self.foo = "foo"
+print ( "Initialized!" )
+self = setmetatable ( self, Test )
+DumpTable(self)
+return self
+end
+
+
+function DumpTable ( t )
+  for k,v in pairs(t) do
+    print ( tostring(k) .. ': ' .. tostring(v) )
+  end
+end
+
+s = {}
+t = Test.init ( s )
+t:llog ( "Hi from lua to lua" )
+DumpTable ( t )
+DumpTable ( getmetatable ( t ) )

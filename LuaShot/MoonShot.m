@@ -93,6 +93,33 @@ static int thunk ( lua_State *L ) {
   return 0;
 }
 
+static void DumpStack(lua_State* l)
+{
+  int i;
+  int top = lua_gettop(l);
+  
+  NSLog(@"Total in stack %d",top);
+  
+  for (i = top; i >= 1; i--)
+  {  /* repeat for each level */
+    int t = lua_type(l, i);
+    switch (t) {
+      case LUA_TSTRING:  /* strings */
+        NSLog(@"\t(%d)string: '%s'", i, lua_tostring(l, i));
+        break;
+      case LUA_TBOOLEAN:  /* booleans */
+        NSLog(@"\t(%d)boolean %s",i, lua_toboolean(l, i) ? "true" : "false");
+        break;
+      case LUA_TNUMBER:  /* numbers */
+        NSLog(@"\t(%d)number: %g", i, lua_tonumber(l, i));
+        break;
+      default:  /* other values */
+        NSLog(@"\t(%d)%s", i, lua_typename(l, t));
+        break;
+    }
+  }
+}
+
 
 @implementation MoonShot
 
@@ -110,14 +137,68 @@ static int thunk ( lua_State *L ) {
   luaL_getmetatable (L, class_getName([object class]) );
   lua_setmetatable(L, -2);
   lua_settable(L,LUA_GLOBALSINDEX);
+  NSLog(@"Finishing bridge");
+  lua_pop(L, 2);
+  DumpStack(L);
 }
 
 - (void)callMethod:(NSString*)method onObject:(NSString*)name withArgCount:(int)count toState:(lua_State*)L {
+  
+  // Get the global variable
+  NSLog(@"Starting callMethod" );
+  DumpStack(L);
+  lua_getglobal(L, [name UTF8String]);
+  DumpStack(L);
+  
+  lua_getglobal(L, "DumpTable");
+  
+  lua_insert(L,-2);
+  DumpStack(L);
+  lua_call(L, 1, 0);
+  DumpStack(L);
+
+  lua_getglobal(L, [name UTF8String]);
+  DumpStack(L);
+  if ( !lua_getmetatable(L, -1) ) {
+    NSLog(@"No meta table");
+    lua_pop(L, 1);
+    return;
+  }
+  
+  
+  
+  lua_pushstring(L, [method UTF8String]);
+  lua_gettable(L, -2);
+  if ( lua_isnil(L, -1) ) {
+    NSLog(@"Failed to find method" );
+    DumpStack(L);
+    lua_pop(L, 2);
+    return;
+  }
+  lua_remove(L, -2); // Pull off the meta table
+  NSLog(@"Fonud method");
+  DumpStack(L);
+  
+  // Stack (top)  method object arguments... (bottom)
+  // Move the object to the 1st argument
+  lua_insert ( L, -count - 2 );
+  lua_insert ( L, -count - 1 );
+  NSLog(@"Ready to call!" );
+  DumpStack(L);
+  int status = lua_pcall(L, count+1, 0, 0);
+  if ( status != 0 ) {
+    DumpStack(L);
+    NSLog (@"Error(%d) calling method %@ on object %@: %s", status, method, name, lua_tostring(L, -1) );
+    lua_pop(L, 1);
+  }
+  
 }
 
 // Create a lua object of the given class (class.init(self)), where self
 // is a dictionary containing the given objects.
 - (NSString*)initLuaObject:(NSString*)class withObjects:(NSDictionary*)map toState:(lua_State*)L {
+  NSLog(@"Starting initLuaObject");
+  DumpStack(L);
   // Find the right method!
   lua_getglobal(L,[class UTF8String]);
   // Did we get a table?
@@ -133,6 +214,8 @@ static int thunk ( lua_State *L ) {
   }
   // Remove the table
   lua_remove(L, -2);
+  NSLog(@"Should have only the init method");
+  DumpStack(L);
   
   // Create our "self"
   lua_newtable(L);
@@ -147,9 +230,13 @@ static int thunk ( lua_State *L ) {
     lua_setfield(L, tableIdx, [key UTF8String]);
     NSLog(@"Set field %@ to value %@", key, obj );
   }
-  lua_call ( L, 1, 0 );
+  NSLog(@"Right before init call");
+  DumpStack(L);
+  lua_call ( L, 1, 1 );
   NSString *name = [NSString stringWithFormat:@"LuaObject%d", ObjectCounter++];
   lua_setglobal(L,[name UTF8String]);
+  // lua_pop(L, 1);  // Pop the object off
+  DumpStack(L);
   return name;
 }
 
